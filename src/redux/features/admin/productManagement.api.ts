@@ -1,5 +1,5 @@
 import { TProduct } from "../../../types";
-import { TQueryParam, TResponseRedux } from "../../../types/global.types";
+import { TQueryParam, TResponseRedux } from "../../../types/global";
 import { baseApi } from "../../api/baseApi";
 
 const productManagementApi = baseApi.injectEndpoints({

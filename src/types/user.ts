@@ -1,6 +1,6 @@
 import { JwtPayload } from "jwt-decode";
 
-export interface TUser {
+export interface IUser {
     _id: string;
     name: string;
     email: string;
