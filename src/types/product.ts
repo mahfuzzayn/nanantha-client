@@ -5,6 +5,7 @@ export interface IProduct {
     price: number;
     image: string;
     category: string;
+    rating: number;
     description: string;
     quantity: number;
     inStock: string | boolean;

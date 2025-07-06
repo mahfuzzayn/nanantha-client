@@ -3,10 +3,11 @@ import KeyFeatures from "@/components/modules/home/KeyFeatures/KeyFeatures";
 import Testimonials from "@/components/modules/home/Testimonials/Testimonials";
 import GetStarted from "@/components/modules/home/GetStarted/GetStarted";
 import { Metadata } from "next";
-import Subjects from "@/components/modules/home/Subjects/Subjects";
+import Products from "@/components/modules/home/Products/Products";
 import Newsletter from "@/components/modules/home/Newsletter/Newsletter";
 import Blogs from "@/components/modules/home/Blogs/Blogs";
 import { getAllProducts } from "@/services/product";
+import TrendingProducts from "@/components/modules/home/TrendingProducts/TrendingProducts";
 
 export const metadata: Metadata = {
     title: "Nanantha",
@@ -16,13 +17,13 @@ export const metadata: Metadata = {
 
 const HomePage = async () => {
     const { data: products } = await getAllProducts();
-    // const { data: subjects } = await getAllSubjects();
+    const { data: trendingProducts } = await getAllProducts();
 
     return (
         <div className="min-h-screen bg-gray-50">
             <HeroSection products={products} />
-            {/* <Subjects subjects={subjects} />
-            <Tutors tutors={tutors} /> */}
+            <Products products={products} />
+            <TrendingProducts products={trendingProducts} />
             <KeyFeatures />
             <Testimonials />
             <GetStarted />

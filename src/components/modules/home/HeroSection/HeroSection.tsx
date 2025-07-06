@@ -46,7 +46,7 @@ const HeroSection = ({ products }: { products: IProduct[] }) => {
             <div className="text-it-medium-dark h-[600px] sm:h-[640px] md:h-[680px] relative pt-36">
                 <div className="max-w-7xl mx-auto text-center px-6 relative z-[15]">
                     <h1 className="text-3xl md:text-5xl font-extrabold text-secondary mb-4">
-                        Find the Perfect Book for Your Needs
+                        Find the Perfect Book from Your Needs
                     </h1>
                     <p className="text-lg mb-6 text-it-secondary font-medium">
                         Search by author, title, or category to get need ones.
