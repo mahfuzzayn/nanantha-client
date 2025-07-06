@@ -1,1 +1,10 @@
+.navbar-section {
+    transition: all 0.3s ease-in-out;
+}
 
+.navbar-section.scrolled {
+    width: calc(100% - 20px);
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    margin: 10px;
+}

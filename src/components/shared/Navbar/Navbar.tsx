@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { MenuIcon, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { MenuIcon, ShoppingCart, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useUser } from "@/context/UserContext";
@@ -9,13 +9,14 @@ import logo from "@/assets/images/logo_2.png";
 import Image from "next/image";
 import { protectedRoutes } from "@/constants";
 import { logout } from "@/services/auth";
-import "./Navbar.css"
+import "./Navbar.css";
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { user, setIsLoading, setUser } = useUser();
     const pathname = usePathname();
     const router = useRouter();
+    const navbarRef = useRef<HTMLElement | null>(null);
 
     const handleLogOut = () => {
         logout();
@@ -51,8 +52,25 @@ const Navbar = () => {
         },
     ];
 
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY >= 50) {
+                navbarRef.current?.classList.add("scrolled");
+            } else {
+                navbarRef.current?.classList.remove("scrolled");
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
     return (
-        <section className="navbar-section bg-muted py-4 fixed top-0 w-full z-[100]">
+        <section
+            ref={navbarRef}
+            className="navbar-section bg-muted py-4 fixed top-0 w-full z-[100]"
+        >
             <header className="container max-w-[1280px] mx-auto flex justify-between items-center px-6 relative select-none">
                 <Link href="/" className="flex items-center gap-x-1">
                     <Image
@@ -67,20 +85,23 @@ const Navbar = () => {
                 </Link>
                 {/* PC Nav */}
                 <nav>
-                    <ul className="hidden lg:flex gap-x-5 font-medium">
+                    <ul className="hidden lg:flex items-center gap-x-5 font-medium">
                         {navLinks.map((link, idx) => (
                             <Link
                                 key={idx}
                                 href={link.href}
-                                className="hover:text-it-primary hover:text-accent transition-all duration-300"
+                                className="hover:text-accent transition-all duration-300"
                             >
                                 {link.label}
                             </Link>
                         ))}
                         {user?.email ? (
                             <>
-                                <li className="hover:text-it-primary transition-all duration-300 group relative">
-                                    <Link href={`/${user?.role}/dashboard`} className="hover:text-accent transition-all duration-300">
+                                <li className="transition-all duration-300 group relative">
+                                    <Link
+                                        href={`/${user?.role}/dashboard`}
+                                        className="hover:text-accent transition-all duration-300"
+                                    >
                                         Dashboard
                                     </Link>
                                     {user?.role === "admin" ? (
@@ -88,7 +109,7 @@ const Navbar = () => {
                                             <li>
                                                 <Link
                                                     href={`${user.role}/dashboard`}
-                                                    className="block hover:text-it-primary hover:text-accent transition-all duration-300 pt-4 px-6 pb-1 w-full"
+                                                    className="block hover:text-accent transition-all duration-300 pt-4 px-6 pb-1 w-full"
                                                 >
                                                     Overview
                                                 </Link>
@@ -96,7 +117,7 @@ const Navbar = () => {
                                             <li>
                                                 <Link
                                                     href={`${user.role}/dashboard/orders`}
-                                                    className="block hover:text-it-primary hover:text-accent transition-all duration-300 py-1 px-6 w-full"
+                                                    className="block hover:text-accent transition-all duration-300 py-1 px-6 w-full"
                                                 >
                                                     Orders
                                                 </Link>
@@ -104,7 +125,7 @@ const Navbar = () => {
                                             <li>
                                                 <Link
                                                     href={`${user.role}/dashboard/products`}
-                                                    className="block hover:text-it-primary hover:text-accent transition-all duration-300 py-1 px-6 w-full"
+                                                    className="block hover:text-accent transition-all duration-300 py-1 px-6 w-full"
                                                 >
                                                     Products
                                                 </Link>
@@ -112,7 +133,7 @@ const Navbar = () => {
                                             <li>
                                                 <Link
                                                     href={`${user.role}/dashboard/reviews`}
-                                                    className="block hover:text-it-primary hover:text-accent transition-all duration-300 py-1 px-6 w-full"
+                                                    className="block hover:text-accent transition-all duration-300 py-1 px-6 w-full"
                                                 >
                                                     Reviews
                                                 </Link>
@@ -120,7 +141,7 @@ const Navbar = () => {
                                             <li>
                                                 <Link
                                                     href={`${user.role}/dashboard/profile`}
-                                                    className="block hover:text-it-primary hover:text-accent transition-all duration-300 py-1 px-6 pb-4 w-full"
+                                                    className="block hover:text-accent transition-all duration-300 py-1 px-6 pb-4 w-full"
                                                 >
                                                     Profile
                                                 </Link>
@@ -131,7 +152,7 @@ const Navbar = () => {
                                             <li>
                                                 <Link
                                                     href={`${user.role}/dashboard`}
-                                                    className="block hover:text-it-primary hover:text-accent transition-all duration-300 pt-4 px-6 pb-1 w-full"
+                                                    className="block hover:text-accent transition-all duration-300 pt-4 px-6 pb-1 w-full"
                                                 >
                                                     Overview
                                                 </Link>
@@ -139,7 +160,7 @@ const Navbar = () => {
                                             <li>
                                                 <Link
                                                     href={`${user.role}/dashboard/orders`}
-                                                    className="block hover:text-it-primary hover:text-accent transition-all duration-300 py-1 px-6 w-full"
+                                                    className="block hover:text-accent transition-all duration-300 py-1 px-6 w-full"
                                                 >
                                                     Orders
                                                 </Link>
@@ -147,7 +168,7 @@ const Navbar = () => {
                                             <li>
                                                 <Link
                                                     href={`${user.role}/dashboard/reviews`}
-                                                    className="block hover:text-it-primary hover:text-accent transition-all duration-300 py-1 px-6 w-full"
+                                                    className="block hover:text-accent transition-all duration-300 py-1 px-6 w-full"
                                                 >
                                                     Reviews
                                                 </Link>
@@ -155,7 +176,7 @@ const Navbar = () => {
                                             <li>
                                                 <Link
                                                     href={`${user.role}/dashboard/profile`}
-                                                    className="block hover:text-it-primary hover:text-accent transition-all duration-300 py-1 px-6 pb-4 w-full"
+                                                    className="block hover:text-accent transition-all duration-300 py-1 px-6 pb-4 w-full"
                                                 >
                                                     Profile
                                                 </Link>
@@ -163,9 +184,17 @@ const Navbar = () => {
                                         </ul>
                                     )}
                                 </li>
+                                <li>
+                                    <Link
+                                        href="/cart"
+                                        className="block transition-all duration-300 w-full p-2 hover:bg-accent hover:text-white border-[2px] border-primary rounded-full"
+                                    >
+                                        <ShoppingCart />
+                                    </Link>
+                                </li>
                                 <button
                                     onClick={handleLogOut}
-                                    className="hover:text-it-primary hover:text-accent cursor-pointer transition-all duration-300"
+                                    className="hover:text-accent cursor-pointer transition-all duration-300"
                                 >
                                     Logout
                                 </button>
@@ -173,7 +202,7 @@ const Navbar = () => {
                         ) : (
                             <Link
                                 href="/login"
-                                className="hover:text-it-primary hover:text-accent transition-all duration-300"
+                                className="hover:text-accent transition-all duration-300"
                             >
                                 Login
                             </Link>
@@ -187,8 +216,8 @@ const Navbar = () => {
                             isMenuOpen && user
                                 ? `${
                                       user.role === "admin"
-                                          ? "h-[495px]"
-                                          : "h-[455px]"
+                                          ? "h-[535px]"
+                                          : "h-[495px]"
                                   } pointer-events-auto`
                                 : isMenuOpen
                                 ? "h-[240px] pointer-events-auto"
@@ -297,13 +326,21 @@ const Navbar = () => {
                                         </ul>
                                     )}
                                 </li>
+                                <li>
+                                    <Link
+                                        href="/cart"
+                                        className="px-6 py-2 block hover:bg-destructive hover:text-white transition-all duration-300"
+                                    >
+                                        Cart
+                                    </Link>
+                                </li>
                                 <Link
                                     href="/"
                                     onClick={() => {
                                         handleLogOut();
                                         setIsMenuOpen(false);
                                     }}
-                                    className="px-6 py-2 hover:bg-destructive hover:text-white transition-all"
+                                    className="px-6 py-2 hover:bg-destructive hover:text-white transition-all duration-300"
                                 >
                                     Logout
                                 </Link>

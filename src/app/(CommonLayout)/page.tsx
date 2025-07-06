@@ -20,7 +20,7 @@ const HomePage = async () => {
     const { data: trendingProducts } = await getAllProducts();
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="home-page min-h-screen bg-gray-50">
             <HeroSection products={products} />
             <Products products={products} />
             <TrendingProducts products={trendingProducts} />
