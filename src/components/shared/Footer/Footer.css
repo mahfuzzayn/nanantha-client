@@ -1,0 +1,8 @@
+.footer-section {
+    background: radial-gradient(
+        ellipse at bottom,
+        var(--color-accent),
+        var(--color-primary),
+        var(--color-secondary)
+    );
+}
