@@ -1,4 +1,4 @@
-import { TProduct } from "../../../types";
+import { IProduct } from "../../../types";
 import { TQueryParam, TResponseRedux } from "../../../types/global";
 import { baseApi } from "../../api/baseApi";
 
@@ -20,7 +20,7 @@ const productManagementApi = baseApi.injectEndpoints({
                     params,
                 };
             },
-            transformResponse: (response: TResponseRedux<TProduct[]>) => {
+            transformResponse: (response: TResponseRedux<IProduct[]>) => {
                 return {
                     data: response.data,
                     meta: response.meta,

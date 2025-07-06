@@ -1,0 +1,9 @@
+.products-image-container {
+    width: 100%;
+}
+
+.hero-section {
+    background-image: url("../../../../assets/images/orange-gradient-bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}

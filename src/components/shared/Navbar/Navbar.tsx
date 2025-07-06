@@ -12,7 +12,7 @@ import { logout } from "@/services/auth";
 import "./Navbar.css"
 
 const Navbar = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(true);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { user, setIsLoading, setUser } = useUser();
     const pathname = usePathname();
     const router = useRouter();

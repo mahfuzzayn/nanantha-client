@@ -1,4 +1,4 @@
-export interface TProduct {
+export interface IProduct {
     _id: string;
     title: string;
     author: string;

@@ -1,0 +1,21 @@
+.news-letter-section .overlay {
+    height: 100%;
+    width: 100%;
+    background-image: url("../../../../assets/images/library.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    z-index: 20;
+}
+
+.news-letter-section .overlay::before {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+    opacity: 50%;
+    z-index: -1;
+}
