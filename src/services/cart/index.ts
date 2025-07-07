@@ -79,8 +79,6 @@ export const removeItem = async (cartData: FieldValues) => {
 export const updateQuantity = async (cartData: FieldValues) => {
     const token = await getValidToken();
 
-    console.log(cartData)
-
     try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/carts`, {
             method: "PUT",

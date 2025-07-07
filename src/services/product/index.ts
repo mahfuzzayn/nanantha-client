@@ -8,40 +8,62 @@ import { FieldValues } from "react-hook-form";
 export const getAllProducts = async (
     page?: string,
     limit?: string,
+    sort?: string,
     query?: {
         [key: string]: string | string[] | undefined;
     }
 ) => {
     const params = new URLSearchParams();
 
-    if (query?.category) {
-        params.append("category", query?.category.toString());
-    }
-
     if (query?.authors) {
         params.append("authors", query?.authors.toString());
     }
 
+    if (query?.category) {
+        params.append("category", query?.category.toString());
+    }
+
     if (query?.rating) {
-        params.append("authors", query?.rating.toString());
+        params.append("rating", query?.rating.toString());
     }
 
     if (query?.maxPrice) {
         params.append("maxPrice", query?.maxPrice.toString());
     }
 
-    if (query?.sort) {
-        params.append("sort", query?.sort.toString());
+    if (query?.keywords) {
+        params.append("keywords", query?.keywords.toString());
+    }
+
+    if (query?.inStock) {
+        params.append("inStock", query?.inStock.toString());
     }
 
     try {
         const res = await fetch(
-            `${process.env.NEXT_PUBLIC_BASE_API}/products?limit=${limit}&page=${page}&${params}&sort=-createdAt`,
+            `${process.env.NEXT_PUBLIC_BASE_API}/products?limit=${limit}&page=${page}&${params}&sort=${sort}`,
             {
                 method: "GET",
                 next: {
                     tags: ["PRODUCT"],
                 },
+            }
+        );
+
+        const result = await res.json();
+
+        return result;
+    } catch (error: any) {
+        return Error(error);
+    }
+};
+
+export const getAllAuthors = async () => {
+    try {
+        const res = await fetch(
+            `${process.env.NEXT_PUBLIC_BASE_API}/products/authors`,
+            {
+                method: "GET",
             }
         );
 

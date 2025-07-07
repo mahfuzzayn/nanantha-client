@@ -7,7 +7,7 @@ import ProductCard from "./ProductCard";
 const Products = ({ products, meta }: { products: IProduct[]; meta: IMeta }) => {
     return (
         <div className="ml-5 lg:ml-0 mt-0 m-5">
-            {products.length > 0 ? (
+            {products?.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
                     {products.map((product) => (
                         <ProductCard key={product?._id} product={product} />
@@ -19,7 +19,7 @@ const Products = ({ products, meta }: { products: IProduct[]; meta: IMeta }) => 
                 </div>
             )}
             <div className="mt-10">
-                {products.length > 0 && (
+                {products?.length > 0 && (
                     <TablePagination totalPage={meta?.totalPage} />
                 )}
             </div>

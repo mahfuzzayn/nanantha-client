@@ -69,10 +69,10 @@ const ProductCard = ({ product }: { product: IProduct }) => {
                 className="h-[200px] mx-auto object-cover rounded-t-md"
             />
             <div className="space-y-3 py-4">
-                <h2 className="text-2xl bg-secondary text-white py-1 text-center rounded-md font-bold">
+                <h2 className="text-xl bg-secondary text-white py-1 px-2 text-center rounded-md font-bold">
                     {product.title}
                 </h2>
-                <p className="text-lg text-white rounded-md font-bold">
+                <p className="text-lg text-white rounded-md font-semibold">
                     Author{" "}
                     <span className="text-secondary">{product.author}</span>
                 </p>

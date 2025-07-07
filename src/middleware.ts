@@ -8,6 +8,7 @@ const roleBasedPrivateRoutes = {
     admin: [/^\/admin/, /^\/admin\/dashboard/],
     user: [
         /^\/user/,
+        /^\/cart/,
         /^\/user\/dashboard/,
         /^\/payment-success/,
         /^\/payment-failed/,
@@ -47,6 +48,7 @@ export const config = {
         "/login",
         "/payment-success",
         "/payment-failed",
+        "/cart",
 
         "/admin",
         "/admin/:page",

@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
-import { IProduct } from "@/types";
+import { IAuthor } from "@/types";
 import { Menu, X } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
@@ -39,7 +39,7 @@ const productCategories = [
     "Religious",
 ];
 
-export default function FilterSidebar({ products }: { products: IProduct[] }) {
+export default function FilterSidebar({ authors }: { authors: IAuthor[] }) {
     const [isFilterMenuOpen, setIsFilterMenuOpen] = useState<boolean>(false);
     const [price, setPrice] = useState([0]);
     const [rating, setRating] = useState<number | string>("All");
@@ -66,7 +66,7 @@ export default function FilterSidebar({ products }: { products: IProduct[] }) {
 
         if (updatedAuthors.includes(authorName)) {
             updatedAuthors = updatedAuthors.filter(
-                (author) => author !== author
+                (author) => author !== authorName
             );
         } else {
             updatedAuthors.push(authorName);
@@ -134,19 +134,17 @@ export default function FilterSidebar({ products }: { products: IProduct[] }) {
                 <div>
                     <h2 className="text-lg font-semibold">Authors</h2>
                     <div className="flex flex-wrap gap-2 mt-2">
-                        {products.map((product) => (
+                        {authors.map((author, index) => (
                             <li
-                                key={product._id}
-                                onClick={() =>
-                                    handleAuthorChange(product.author)
-                                }
+                                key={index}
+                                onClick={() => handleAuthorChange(author.name)}
                                 className={`px-2 py-1 cursor-pointer text-sm rounded list-none ${
-                                    selectedAuthors.includes(product.author)
+                                    selectedAuthors.includes(author.name)
                                         ? "bg-primary text-white"
                                         : "bg-gray-200 text-black"
                                 }`}
                             >
-                                {product.author}
+                                {author.name}
                             </li>
                         ))}
                     </div>
@@ -190,10 +188,10 @@ export default function FilterSidebar({ products }: { products: IProduct[] }) {
                     <h2 className="text-lg font-semibold">Price (Taka)</h2>
                     <div className="flex justify-between my-2">
                         <span>0</span>
-                        <span>1000</span>
+                        <span>500</span>
                     </div>
                     <Slider
-                        max={1000}
+                        max={500}
                         step={1}
                         onValueChange={(value) => {
                             setPrice(value);
@@ -208,7 +206,9 @@ export default function FilterSidebar({ products }: { products: IProduct[] }) {
                 </div>
                 <div>
                     <h2 className="text-lg font-semibold">Keywords</h2>
-                    <span className="text-sm">Insert (Title, Description)</span>
+                    <span className="text-xs">
+                        Insert (Title, Author, Category Description)
+                    </span>
                     <Input
                         onChange={(e) => {
                             const value = e.target.value;
@@ -238,7 +238,7 @@ export default function FilterSidebar({ products }: { products: IProduct[] }) {
                     </div>
                 </div>
             </div>
-            <div className="fixed lg:hidden top-24 left-0 z-[1000]">
+            <div className="fixed lg:hidden top-40 left-0 z-[90]">
                 <Button
                     className="flex items-center gap-x-2 bg-destructive cursor-pointer hover:bg-it-destructive p-1 pr-2 text-white rounded-l-none rounded-r-[8px]"
                     onClick={() => setIsFilterMenuOpen(true)}

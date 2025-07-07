@@ -13,3 +13,8 @@ export interface IProduct {
     quantity: number;
     inStock: string | boolean;
 }
+
+export interface IAuthor {
+    name: string;
+    books: string[];
+}

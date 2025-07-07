@@ -3,30 +3,27 @@
 import { useEffect, useRef, useState } from "react";
 import { MenuIcon, ShoppingCart, X } from "lucide-react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useUser } from "@/context/UserContext";
 import logo from "@/assets/images/logo_2.png";
 import Image from "next/image";
-import { protectedRoutes } from "@/constants";
 import { logout } from "@/services/auth";
 import "./Navbar.css";
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { user, setIsLoading, setUser, cart } = useUser();
-    const pathname = usePathname();
     const router = useRouter();
     const navbarRef = useRef<HTMLElement | null>(null);
 
-    const handleLogOut = () => {
-        logout();
+    const handleLogOut = async () => {
+        await logout();
         setUser(null);
         setIsMenuOpen(false);
         setIsLoading(true);
 
-        if (protectedRoutes.some((route) => pathname.match(route))) {
-            router.push("/");
-        }
+        router.push("/");
+        router.refresh();
     };
 
     const navLinks = [
