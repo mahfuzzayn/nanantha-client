@@ -1,4 +1,5 @@
 import { getCurrentUser } from "@/services/auth";
+import { ICart } from "@/types";
 import { IUser } from "@/types/user";
 import {
     createContext,
@@ -15,12 +16,15 @@ interface IUserProviderValues {
     setUser: (user: IUser | null) => void;
     setIsLoading: Dispatch<SetStateAction<boolean>>;
     handleUser: () => void;
+    cart: ICart | null;
+    setCart: Dispatch<SetStateAction<ICart | null>>;
 }
 
 const UserContext = createContext<IUserProviderValues | undefined>(undefined);
 
 const UserProvider = ({ children }: { children: React.ReactNode }) => {
     const [user, setUser] = useState<IUser | null>(null);
+    const [cart, setCart] = useState<ICart | null>(null);
     const [isLoading, setIsLoading] = useState(true);
 
     const handleUser = async () => {
@@ -36,7 +40,15 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
 
     return (
         <UserContext.Provider
-            value={{ user, setUser, isLoading, setIsLoading, handleUser }}
+            value={{
+                user,
+                setUser,
+                isLoading,
+                setIsLoading,
+                handleUser,
+                cart,
+                setCart,
+            }}
         >
             {children}
         </UserContext.Provider>

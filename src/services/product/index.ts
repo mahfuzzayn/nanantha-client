@@ -5,30 +5,6 @@ import { getValidToken } from "@/lib/verifyToken";
 import { revalidateTag } from "next/cache";
 import { FieldValues } from "react-hook-form";
 
-export const createSubject = async (subjectData: FieldValues) => {
-    const token = await getValidToken();
-
-    try {
-        const res = await fetch(
-            `${process.env.NEXT_PUBLIC_BASE_API}/subjects/create-subject`,
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: token,
-                },
-                body: JSON.stringify(subjectData),
-            }
-        );
-
-        const result = await res.json();
-
-        return result;
-    } catch (error: any) {
-        return Error(error);
-    }
-};
-
 export const getAllProducts = async (
     page?: string,
     limit?: string,
@@ -42,8 +18,20 @@ export const getAllProducts = async (
         params.append("category", query?.category.toString());
     }
 
-    if (query?.gradeLevel) {
-        params.append("gradeLevel", query?.gradeLevel.toString());
+    if (query?.authors) {
+        params.append("authors", query?.authors.toString());
+    }
+
+    if (query?.rating) {
+        params.append("authors", query?.rating.toString());
+    }
+
+    if (query?.maxPrice) {
+        params.append("maxPrice", query?.maxPrice.toString());
+    }
+
+    if (query?.sort) {
+        params.append("sort", query?.sort.toString());
     }
 
     try {
@@ -65,14 +53,14 @@ export const getAllProducts = async (
     }
 };
 
-export const getSingleSubject = async (subjectId: string) => {
+export const getSingleProduct = async (productId: string) => {
     try {
         const res = await fetch(
-            `${process.env.NEXT_PUBLIC_BASE_API}/subjects/${subjectId}`,
+            `${process.env.NEXT_PUBLIC_BASE_API}/products/${productId}`,
             {
                 method: "GET",
                 next: {
-                    tags: ["SUBJECT"],
+                    tags: ["PRODUCT"],
                 },
             }
         );
@@ -85,26 +73,53 @@ export const getSingleSubject = async (subjectId: string) => {
     }
 };
 
-export const updateSubject = async (
-    subjectId: string,
-    subjectData: FieldValues
+// Admin Options
+export const createProduct = async (productData: FieldValues) => {
+    const token = await getValidToken();
+
+    try {
+        const res = await fetch(
+            `${process.env.NEXT_PUBLIC_BASE_API}/product/create-product`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: token,
+                },
+                body: JSON.stringify(productData),
+            }
+        );
+
+        const result = await res.json();
+
+        revalidateTag("PRODUCT");
+
+        return result;
+    } catch (error: any) {
+        return Error(error);
+    }
+};
+
+export const updateProduct = async (
+    productId: string,
+    productData: FieldValues
 ) => {
     const token = await getValidToken();
 
     try {
         const res = await fetch(
-            `${process.env.NEXT_PUBLIC_BASE_API}/subjects/${subjectId}`,
+            `${process.env.NEXT_PUBLIC_BASE_API}/products/${productId}`,
             {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: token,
                 },
-                body: JSON.stringify(subjectData),
+                body: JSON.stringify(productData),
             }
         );
 
-        revalidateTag("SUBJECT");
+        revalidateTag("PRODUCT");
         const result = await res.json();
 
         return result;
@@ -113,12 +128,12 @@ export const updateSubject = async (
     }
 };
 
-export const deleteSubject = async (subjectId: string) => {
+export const deleteProduct = async (productId: string) => {
     const token = await getValidToken();
 
     try {
         const res = await fetch(
-            `${process.env.NEXT_PUBLIC_BASE_API}/subjects/${subjectId}/discontinue`,
+            `${process.env.NEXT_PUBLIC_BASE_API}/products/${productId}`,
             {
                 method: "PATCH",
                 headers: {
@@ -127,8 +142,9 @@ export const deleteSubject = async (subjectId: string) => {
             }
         );
 
-        revalidateTag("SUBJECT");
         const result = await res.json();
+
+        revalidateTag("PRODUCT");
 
         return result;
     } catch (error: any) {

@@ -1,4 +1,4 @@
-import { TCartData, TResponseRedux } from "../../../types";
+import { ICart, TResponseRedux } from "../../../types";
 import { baseApi } from "../../api/baseApi";
 
 const cartApi = baseApi.injectEndpoints({
@@ -8,7 +8,7 @@ const cartApi = baseApi.injectEndpoints({
                 url: `/carts/${userId}`,
                 method: "GET",
             }),
-            transformResponse: (response: TResponseRedux<TCartData>) => {
+            transformResponse: (response: TResponseRedux<ICart>) => {
                 return {
                     data: response.data,
                 };

@@ -1,4 +1,4 @@
-export interface TCartItem {
+export interface ICartItem {
     _id: string;
     productId: string;
     title: string;
@@ -9,13 +9,13 @@ export interface TCartItem {
     totalPrice: number;
 }
 
-export type TCartData = {
+export interface ICart {
     _id: string;
     userId: string;
-    items: TCartItem[];
+    items: ICartItem[];
     totalItems: number;
     totalPrice: number;
     createdAt: string;
     updatedAt: string;
     __v: number;
-};
+}

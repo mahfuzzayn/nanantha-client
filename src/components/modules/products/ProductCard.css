@@ -1,0 +1,15 @@
+.tutor-card {
+    position: relative;
+}
+
+.tutor-card::before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    border-radius: 20px;
+    height: calc(100% + 6px);
+    width: calc(100% + 6px);
+    background-color: hsl(var(--it-200));
+    z-index: -1;
+}

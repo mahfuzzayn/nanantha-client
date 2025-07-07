@@ -66,6 +66,32 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<"div">) => {
         }
     };
 
+    const handleLoadDemoCredentials = (role: "user" | "admin") => {
+        if (role === "user") {
+            form.setValue(
+                "email",
+                process.env.NEXT_PUBLIC_LOGIN_DEMO_USER_EMAIL as string
+            );
+            form.setValue(
+                "password",
+                process.env.NEXT_PUBLIC_LOGIN_DEMO_USER_PASSWORD as string
+            );
+
+            toast.success("Demo User credentials has been filled.");
+        } else if (role === "admin") {
+            form.setValue(
+                "email",
+                process.env.NEXT_PUBLIC_LOGIN_DEMO_ADMIN_EMAIL as string
+            );
+            form.setValue(
+                "password",
+                process.env.NEXT_PUBLIC_LOGIN_DEMO_ADMIN_PASSWORD as string
+            );
+
+            toast.success("Demo Admin credentials has been filled.");
+        }
+    };
+
     const onSubmit: SubmitHandler<FieldValues> = async (data: FieldValues) => {
         const toastId = toast.loading("Logging...", {
             style: toastStyles.loading,
@@ -107,12 +133,33 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<"div">) => {
         <div className={cn("flex flex-col gap-6", className)} {...props}>
             <Card>
                 <CardHeader className="text-center">
-                    <CardTitle className="text-xl">Login</CardTitle>
+                    <CardTitle className="text-xl text-secondary">Login</CardTitle>
                     <CardDescription>
                         Welcome back! Log in with your credentials below.
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
+                    <div className="mb-4 relative">
+                        <h2 className="font-semibold">Quick Login (Demo)</h2>
+                        <div className="flex justify-between gap-3 mt-4">
+                            <button
+                                onClick={() =>
+                                    handleLoadDemoCredentials("user")
+                                }
+                                className="w-full cursor-pointer bg-transparent text-it-secondary hover:bg-accent hover:text-white font-semibold border-[1px] border-it-secondary px-2 py-1 rounded-md transition-all duration-300"
+                            >
+                                Student
+                            </button>
+                            <button
+                                onClick={() =>
+                                    handleLoadDemoCredentials("admin")
+                                }
+                                className="w-full cursor-pointer bg-transparent text-it-secondary hover:bg-accent hover:text-white font-semibold border-[1px] border-it-secondary px-2 py-1 rounded-md transition-all duration-300"
+                            >
+                                Admin
+                            </button>
+                        </div>
+                    </div>
                     <Form {...form}>
                         <form onSubmit={form.handleSubmit(onSubmit)}>
                             <div className="grid gap-6">

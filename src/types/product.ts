@@ -1,3 +1,5 @@
+import { IReview } from "./review";
+
 export interface IProduct {
     _id: string;
     title: string;
@@ -7,6 +9,7 @@ export interface IProduct {
     category: string;
     rating: number;
     description: string;
+    reviews: IReview[];
     quantity: number;
     inStock: string | boolean;
 }
