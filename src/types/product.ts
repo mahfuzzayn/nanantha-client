@@ -12,6 +12,8 @@ export interface IProduct {
     reviews: IReview[];
     quantity: number;
     inStock: string | boolean;
+    createdAt?: Date;
+    updatedAt?: Date;
 }
 
 export interface IAuthor {

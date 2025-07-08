@@ -1,4 +1,4 @@
-import { TOrder, TQueryParam, TResponseRedux } from "../../../types";
+import { IOrder, TQueryParam, TResponseRedux } from "../../../types";
 import { baseApi } from "../../api/baseApi";
 
 const orderManagementApi = baseApi.injectEndpoints({
@@ -19,7 +19,7 @@ const orderManagementApi = baseApi.injectEndpoints({
                     params,
                 };
             },
-            transformResponse: (response: TResponseRedux<TOrder[]>) => {
+            transformResponse: (response: TResponseRedux<IOrder[]>) => {
                 return {
                     data: response.data,
                     meta: response.meta,

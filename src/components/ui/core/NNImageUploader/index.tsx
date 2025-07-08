@@ -9,7 +9,7 @@ type TImageUploaderProps = {
     setImagePreview: Dispatch<SetStateAction<string | null>>;
 };
 
-const ITImageUploader = ({
+const NNImageUploader = ({
     label = "Upload Images",
     className,
     setImageFile,
@@ -53,4 +53,4 @@ const ITImageUploader = ({
     );
 };
 
-export default ITImageUploader;
+export default NNImageUploader;

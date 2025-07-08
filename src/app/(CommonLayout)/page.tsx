@@ -17,7 +17,11 @@ export const metadata: Metadata = {
 
 const HomePage = async () => {
     const { data: products } = await getAllProducts();
-    const { data: trendingProducts } = await getAllProducts();
+    const { data: trendingProducts } = await getAllProducts(
+        undefined,
+        "8",
+        "rating"
+    );
 
     return (
         <div className="home-page min-h-screen bg-gray-50">

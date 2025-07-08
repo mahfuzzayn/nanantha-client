@@ -4,10 +4,12 @@ export interface IUser {
     _id: string;
     name: string;
     email: string;
+    profileUrl: string;
     password: string;
     passwordChangedAt?: Date;
+    location: string;
     role: "user" | "admin";
-    isDeactivated: boolean;
+    isActive: boolean;
     createdAt: string;
     updatedAt: string;
     __v: number;

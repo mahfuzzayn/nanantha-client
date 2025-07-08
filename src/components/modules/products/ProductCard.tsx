@@ -56,7 +56,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
 
     return (
         <div
-            className="tutor-card py-6 px-4 rounded-md border-[1px] border-[#fffff363]"
+            className="product-card py-6 px-4 rounded-md border-[1px] border-[#fffff363] flex flex-col"
             style={{
                 backgroundImage: `url('${orangeGradientBg.src}')`,
             }}
@@ -68,7 +68,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
                 alt={`Profile Photo of ${product.title}`}
                 className="h-[200px] mx-auto object-cover rounded-t-md"
             />
-            <div className="space-y-3 py-4">
+            <div className="space-y-3 flex-1 flex flex-col">
                 <h2 className="text-xl bg-secondary text-white py-1 px-2 text-center rounded-md font-bold">
                     {product.title}
                 </h2>
@@ -105,7 +105,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
                         readOnly
                     />
                 </div>
-                <div className="flex gap-4 mt-10 overflow-hidden">
+                <div className="flex gap-4 mt-auto overflow-hidden pt-5">
                     <Link href={`/products/${product?._id}`} className="w-full">
                         <Button className="w-full bg-muted text-black cursor-pointer hover:bg-it-light-dark">
                             See Full Details
@@ -119,7 +119,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
                                     ? false
                                     : true || isSubmitting
                             }
-                            className="w-full bg-primary cursor-pointer hover:bg-it-light-dark"
+                            className="w-full bg-primary cursor-pointer hover:bg-primary"
                         >
                             {isSubmitting ? "Adding..." : "Add to Cart"}
                         </Button>

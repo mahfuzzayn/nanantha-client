@@ -114,7 +114,7 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<"div">) => {
                     router.push("/");
                 }
             } else {
-                toast.error("Failed to logged in.", {
+                toast.error(res.message, {
                     id: toastId,
                     style: toastStyles.error,
                 });

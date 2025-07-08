@@ -1,8 +1,8 @@
-.tutor-card {
+.product-card {
     position: relative;
 }
 
-.tutor-card::before {
+.product-card::before {
     content: "";
     position: absolute;
     top: 6px;

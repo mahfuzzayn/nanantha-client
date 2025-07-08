@@ -66,7 +66,7 @@ const Navbar = () => {
     return (
         <section
             ref={navbarRef}
-            className="navbar-section bg-muted py-4 fixed top-0 w-full z-[100]"
+            className="navbar-section py-4 fixed top-0 w-full z-[100]"
         >
             <header className="container max-w-[1280px] mx-auto flex justify-between items-center px-6 relative select-none">
                 <Link href="/" className="flex items-center gap-x-1">

@@ -1,9 +1,10 @@
 export const protectedRoutes = [
     "/login",
-    "/create-subject",
-    "/tutor",
-    "/tutor/:page",
-    "/tutor/:page/:page",
-    "/student",
-    "/student/:page",
+    "/create-product",
+    "/admin",
+    "/admin/:page",
+    "/admin/:page/:page",
+    "/user",
+    "/user/:page",
+    "/user/:page/:page",
 ];

@@ -3,7 +3,6 @@
 
 import { getValidToken } from "@/lib/verifyToken";
 import { revalidateTag } from "next/cache";
-import { FieldValues } from "react-hook-form";
 
 export const getAllProducts = async (
     page?: string,
@@ -96,25 +95,25 @@ export const getSingleProduct = async (productId: string) => {
 };
 
 // Admin Options
-export const createProduct = async (productData: FieldValues) => {
+export const createProduct = async (productData: FormData) => {
     const token = await getValidToken();
 
     try {
         const res = await fetch(
-            `${process.env.NEXT_PUBLIC_BASE_API}/product/create-product`,
+            `${process.env.NEXT_PUBLIC_BASE_API}/products/create-product`,
             {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
                     Authorization: token,
                 },
-                body: JSON.stringify(productData),
+                next: {
+                    tags: ["PRODUCT"],
+                },
+                body: productData,
             }
         );
 
         const result = await res.json();
-
-        revalidateTag("PRODUCT");
 
         return result;
     } catch (error: any) {
@@ -124,7 +123,7 @@ export const createProduct = async (productData: FieldValues) => {
 
 export const updateProduct = async (
     productId: string,
-    productData: FieldValues
+    productData: FormData
 ) => {
     const token = await getValidToken();
 
@@ -134,15 +133,15 @@ export const updateProduct = async (
             {
                 method: "PATCH",
                 headers: {
-                    "Content-Type": "application/json",
                     Authorization: token,
                 },
-                body: JSON.stringify(productData),
+                body: productData,
             }
         );
 
-        revalidateTag("PRODUCT");
         const result = await res.json();
+
+        revalidateTag("PRODUCT");
 
         return result;
     } catch (error: any) {
@@ -157,7 +156,7 @@ export const deleteProduct = async (productId: string) => {
         const res = await fetch(
             `${process.env.NEXT_PUBLIC_BASE_API}/products/${productId}`,
             {
-                method: "PATCH",
+                method: "DELETE",
                 headers: {
                     Authorization: token,
                 },
