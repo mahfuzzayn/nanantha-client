@@ -12,7 +12,7 @@ import TrendingProducts from "@/components/modules/home/TrendingProducts/Trendin
 export const metadata: Metadata = {
     title: "Nanantha",
     description:
-        "Explore our platform to connect with expert tutors and embark on a personalized learning journey.",
+        "Welcome to Nanantha – your trusted online bookstore. Discover bestsellers, new releases, and timeless classics across every genre. Explore, shop, and fuel your love for reading!",
 };
 
 const HomePage = async () => {
@@ -20,7 +20,7 @@ const HomePage = async () => {
     const { data: trendingProducts } = await getAllProducts(
         undefined,
         "8",
-        "rating"
+        "-rating"
     );
 
     return (

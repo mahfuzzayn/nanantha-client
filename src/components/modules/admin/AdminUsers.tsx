@@ -190,10 +190,15 @@ const AdminUsers = ({ users, meta }: { users: IUser[]; meta: IMeta }) => {
 
     return (
         <div className="m-5">
-            <div className="flex items-center justify-between mb-4">
+            <div className="mb-4 space-y-2">
                 <h1 className="text-2xl text-secondary font-bold">
                     Manage Users
                 </h1>
+                {meta?.total && (
+                    <p className="font-medium text-primary">
+                        Total Users: <span>{meta?.total}</span>
+                    </p>
+                )}
             </div>
             <NNTable columns={columns} data={users || []} />
             <TablePagination totalPage={meta?.totalPage} />

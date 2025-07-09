@@ -6,7 +6,7 @@ import React from "react";
 
 export const metadata: Metadata = {
     title: "Users ‣ Admin Dashboard ‣ Nanantha",
-    description: "View users of instructly's and know about them as an admin.",
+    description: "Manage bookstore users in the Nanantha admin panel. View profiles, roles, and activity for effective user administration.",
 };
 
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -21,7 +21,7 @@ const AdminUsersPage = async ({
         await getAllUsers(
             (query?.page as string) || undefined,
             "10",
-            (query?.sort as string) || undefined,
+            (query?.sort as string) || "-createdAt",
             query
         );
 

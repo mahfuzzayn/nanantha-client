@@ -4,6 +4,7 @@ import { getMe } from "@/services/auth";
 import { getSingleProduct } from "@/services/product";
 import { IProduct } from "@/types";
 import { ArrowLeft } from "lucide-react";
+import { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
 
@@ -11,27 +12,27 @@ export const generateMetadata = async ({
     params,
 }: {
     params: Promise<{ productId: string }>;
-}) => {
+}): Promise<Metadata> => {
     const { productId } = await params;
-    const { data: subject }: { data: IProduct } = await getSingleProduct(
+    const { data: product }: { data: IProduct } = await getSingleProduct(
         productId
     );
 
     return {
         title: `${
-            subject?.createdAt
-                ? `Update Product (${subject?._id.slice(
+            product?.createdAt
+                ? `Update Product (${product?._id.slice(
                       0,
                       3
-                  )}...${subject?._id.slice(
-                      subject?._id.length - 3,
-                      subject?._id.length
+                  )}...${product?._id.slice(
+                      product?._id.length - 3,
+                      product?._id.length
                   )})`
                 : "Invalid Product"
         } ‣ Admin Dashboard ‣ Nanantha`,
         description: `${
-            subject?.createdAt
-                ? `Update product for to specialize in as an admin to better serve your students.`
+            product?.createdAt
+                ? `Edit product details in Nanantha’s admin dashboard. Update book information, pricing, image, and availability seamlessly.`
                 : "Invalid Product, so we can't provide any description."
         }`,
     };

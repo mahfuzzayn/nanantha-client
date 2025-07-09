@@ -8,7 +8,7 @@ import React from "react";
 export const metadata: Metadata = {
     title: "Products ‣ Nanantha",
     description:
-        "Browse our list of qualified tutors across various subjects to find the perfect match for your learning needs.",
+        "Browse Nanantha’s diverse collection of books. Find novels, non-fiction, educational reads, and more—all curated for passionate readers. Shop your next favorite book today!",
 };
 
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -24,7 +24,7 @@ const ProductsPage = async ({
         await getAllProducts(
             (query?.page as string) || undefined,
             "6",
-            (query?.sort as string) || undefined,
+            (query?.sort as string) || "-createdAt",
             query
         );
     const { data: authors } = await getAllAuthors();

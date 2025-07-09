@@ -9,9 +9,9 @@ import { Metadata } from "next";
 import React from "react";
 
 export const metadata: Metadata = {
-    title: "Admin Dashboard ‣ Nanantha",
+    title: "Overview ‣ Admin Dashboard ‣ Nanantha",
     description:
-        "Access instructly's inside to see overview, manage bookings, subjects, and your profile as an admin.",
+        "Admin Overview | Nanantha: Get a quick snapshot of sales, orders, products, and activity insights for seamless bookstore management.",
 };
 
 const AdminDashboardPage = async () => {
@@ -22,7 +22,7 @@ const AdminDashboardPage = async () => {
     const { data: reviews }: { data: IReview[] } = await getAllReviews();
 
     return (
-        <main className="space-y-5 m-5">
+        <main className="admin-dashboard-page space-y-5 m-5">
             <section className="space-y-6 w-full">
                 <AdminOverview
                     admin={admin}

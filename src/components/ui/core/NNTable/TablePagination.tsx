@@ -43,9 +43,9 @@ const TablePagination = ({ totalPage }: { totalPage: number }) => {
                 disabled={currentPage === 1}
                 variant="outline"
                 size="sm"
-                className="w-8 h-8 rounded-full flex justify-center items-center"
+                className="w-8 h-8 rounded-full flex justify-center items-center cursor-pointer group"
             >
-                <ArrowLeft />
+                <ArrowLeft className="group-hover:text-white" />
             </Button>
             {[...Array(totalPage)].map((_, index) => (
                 <Button
@@ -56,7 +56,7 @@ const TablePagination = ({ totalPage }: { totalPage: number }) => {
                     key={index}
                     variant={currentPage === index + 1 ? "default" : "outline"}
                     size="sm"
-                    className="w-8 h-8 rounded-full flex justify-center items-center hover:text-white hover:bg-secondary"
+                    className="w-8 h-8 rounded-full flex justify-center items-center hover:text-white hover:bg-secondary cursor-pointer"
                 >
                     {index + 1}
                 </Button>
@@ -66,9 +66,9 @@ const TablePagination = ({ totalPage }: { totalPage: number }) => {
                 disabled={currentPage >= totalPage}
                 variant="outline"
                 size="sm"
-                className="w-8 h-8 rounded-full flex justify-center items-center"
+                className="w-8 h-8 rounded-full flex justify-center items-center cursor-pointer group"
             >
-                <ArrowRight />
+                <ArrowRight className="group-hover:text-white" />
             </Button>
         </div>
     );

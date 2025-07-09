@@ -1,9 +1,16 @@
 import AdminProfile from "@/components/modules/profile/admin-profile/AdminProfile";
 import { getMe } from "@/services/auth";
 import { IUser } from "@/types";
+import { Metadata } from "next";
 import React from "react";
 
-const ProfilePage = async () => {
+export const metadata: Metadata = {
+    title: "Profile ‣ Admin Dashboard ‣ Nanantha",
+    description:
+        "Admin Profile | Nanantha: Manage your account details, security, and admin preferences for smooth bookstore operations.",
+};
+
+const AdminProfilePage = async () => {
     const { data: admin }: { data: IUser } = await getMe();
 
     return (
@@ -22,4 +29,4 @@ const ProfilePage = async () => {
     );
 };
 
-export default ProfilePage;
+export default AdminProfilePage;

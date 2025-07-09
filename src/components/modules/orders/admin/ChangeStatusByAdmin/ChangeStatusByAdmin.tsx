@@ -1,3 +1,5 @@
+"use client"
+
 import {
     Select,
     SelectContent,
@@ -9,9 +11,14 @@ import {
 } from "@/components/ui/select";
 import { toastStyles } from "@/constants";
 import { changeOrderStatusByAdmin } from "@/services/order";
-import { IStatus, StatusDisplayName, validStatusTransitions } from "@/types";
+import {
+    IStatus,
+    StatusActionName,
+    validAdminStatusTransitions,
+} from "@/types";
 import React from "react";
 import { toast } from "sonner";
+import "./ChangeStatusByAdmin.css";
 
 const ChangeStatusByAdmin = ({
     orderId,
@@ -22,14 +29,10 @@ const ChangeStatusByAdmin = ({
 }) => {
     const currentStatus = status as IStatus;
 
-    const nextStatuses = validStatusTransitions[currentStatus] || [];
-
-    const adminAllowedOptions = nextStatuses.filter(
-        (s) => s !== IStatus.CANCELLED_BY_USER && s !== IStatus.APPROVED
-    );
+    const adminAllowedOptions = validAdminStatusTransitions[currentStatus] || [];
 
     const handleStatusChange = async (status: IStatus) => {
-        const toastId = toast.loading("Adding to Cart...", {
+        const toastId = toast.loading("Changing order status...", {
             style: toastStyles.success,
         });
 
@@ -71,8 +74,12 @@ const ChangeStatusByAdmin = ({
                     <SelectLabel>Statuses</SelectLabel>
                     {adminAllowedOptions.length > 0 ? (
                         adminAllowedOptions.map((status) => (
-                            <SelectItem key={status} value={status as string} className="cursor-pointer">
-                                {StatusDisplayName[status]}
+                            <SelectItem
+                                key={status}
+                                value={status as string}
+                                className="cursor-pointer"
+                            >
+                                {StatusActionName[status]}
                             </SelectItem>
                         ))
                     ) : (

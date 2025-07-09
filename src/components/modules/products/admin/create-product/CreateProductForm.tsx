@@ -184,6 +184,7 @@ const CreateProductForm = ({ user }: { user: IUser }) => {
                                                 type="text"
                                                 className="bg-gray-100 text-black placeholder:text-gray-700"
                                                 {...field}
+                                                placeholder="Enter title of the product"
                                                 value={field.value || ""}
                                             />
                                         </FormControl>
@@ -206,6 +207,7 @@ const CreateProductForm = ({ user }: { user: IUser }) => {
                                                 type="text"
                                                 className="bg-gray-100 text-black placeholder:text-gray-700"
                                                 {...field}
+                                                placeholder="Enter author of the product"
                                                 value={field.value || ""}
                                             />
                                         </FormControl>
@@ -232,6 +234,7 @@ const CreateProductForm = ({ user }: { user: IUser }) => {
                                                 className="bg-gray-100 text-black placeholder:text-gray-700"
                                                 {...field}
                                                 value={field.value || 1}
+                                                placeholder="Enter price of the product"
                                                 onChange={(e) => {
                                                     field.onChange(
                                                         Number(e.target.value)
@@ -260,6 +263,7 @@ const CreateProductForm = ({ user }: { user: IUser }) => {
                                                 className="bg-gray-100 text-black placeholder:text-gray-700"
                                                 {...field}
                                                 value={field.value || 0}
+                                                placeholder="Enter quantity of the product"
                                                 onChange={(e) => {
                                                     field.onChange(
                                                         Number(e.target.value)
@@ -294,7 +298,7 @@ const CreateProductForm = ({ user }: { user: IUser }) => {
                                     defaultValue=""
                                 >
                                     <SelectTrigger className="mt-2 w-full bg-gray-100 text-black placeholder:text-gray-700">
-                                        <SelectValue placeholder="Select a grade" />
+                                        <SelectValue placeholder="Select category of the product" />
                                     </SelectTrigger>
                                     <SelectContent>
                                         <SelectGroup>
@@ -331,6 +335,7 @@ const CreateProductForm = ({ user }: { user: IUser }) => {
                                     <Textarea
                                         className="bg-gray-100 text-black placeholder:text-gray-700"
                                         {...field}
+                                        placeholder="Enter brief description of the product..."
                                         value={field.value || ""}
                                     />
                                 </FormControl>

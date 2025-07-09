@@ -35,6 +35,7 @@ const AdminProfile = ({ admin }: { admin: IUser }) => {
         resolver: zodResolver(adminProfileSchema),
         defaultValues: {
             name: admin?.name,
+            location: admin?.location,
             oldPassword: "",
             newPassword: "",
         },
@@ -128,27 +129,54 @@ const AdminProfile = ({ admin }: { admin: IUser }) => {
                     onSubmit={form.handleSubmit(onSubmit)}
                     className="space-y-4"
                 >
-                    <FormField
-                        control={form.control}
-                        name="name"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel className="font-bold">
-                                    Name
-                                </FormLabel>
-                                <FormControl>
-                                    <Input
-                                        type="text"
-                                        className="bg-gray-100 text-black placeholder:text-gray-700"
-                                        placeholder="Enter your name"
-                                        {...field}
-                                        value={field.value || ""}
-                                    />
-                                </FormControl>
-                                <FormMessage className="text-red-500" />
-                            </FormItem>
-                        )}
-                    />
+                    <div className="flex flex-col md:flex-row gap-4">
+                        <div className="w-full">
+                            <FormField
+                                control={form.control}
+                                name="name"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="font-bold">
+                                            Name
+                                        </FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                type="text"
+                                                className="bg-gray-100 text-black placeholder:text-gray-700"
+                                                placeholder="Enter your name"
+                                                {...field}
+                                                value={field.value || ""}
+                                            />
+                                        </FormControl>
+                                        <FormMessage className="text-red-500" />
+                                    </FormItem>
+                                )}
+                            />
+                        </div>
+                        <div className="w-full">
+                            <FormField
+                                control={form.control}
+                                name="location"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="font-bold">
+                                            Location
+                                        </FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                type="text"
+                                                className="bg-gray-100 text-black placeholder:text-gray-700"
+                                                placeholder="Enter your location"
+                                                {...field}
+                                                value={field.value || ""}
+                                            />
+                                        </FormControl>
+                                        <FormMessage className="text-red-500" />
+                                    </FormItem>
+                                )}
+                            />
+                        </div>
+                    </div>
                     <FormField
                         control={form.control}
                         name="oldPassword"

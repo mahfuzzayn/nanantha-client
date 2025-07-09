@@ -48,10 +48,10 @@ export function NavMain({
                         src={logo}
                         height={40}
                         width={40}
-                        alt="Instructly Logo"
+                        alt="Nanantha Logo"
                     />
                     <h2 className="text-2xl text-accent font-extrabold">
-                        Instructly
+                        Nanantha
                     </h2>
                 </Link>
             </SidebarGroupLabel>

@@ -148,7 +148,7 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<"div">) => {
                                 }
                                 className="w-full cursor-pointer bg-transparent text-it-secondary hover:bg-accent hover:text-white font-semibold border-[1px] border-it-secondary px-2 py-1 rounded-md transition-all duration-300"
                             >
-                                Student
+                                User
                             </button>
                             <button
                                 onClick={() =>

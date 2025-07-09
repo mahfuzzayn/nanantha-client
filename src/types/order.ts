@@ -47,7 +47,7 @@ export enum IStatusForAdmin {
     DELIVERED = "delivered", // Admin 3
 }
 
-export enum IStatusForStudent {
+export enum IStatusForUser {
     CANCELLED_BY_USER = "cancelled_by_user", // User 1
 }
 
@@ -81,10 +81,19 @@ export const PaymentStatusDisplayName: Record<IPaymentStatus, string> = {
     [IPaymentStatus.PAID]: "Paid",
 };
 
-export const validStatusTransitions: Record<IStatus, IStatus[]> = {
-    [IStatus.PENDING_FOR_PAYMENT]: [IStatus.APPROVED, IStatus.CANCELLED_BY_USER],
+export const validAdminStatusTransitions: Record<IStatus, IStatus[]> = {
+    [IStatus.PENDING_FOR_PAYMENT]: [],
     [IStatus.APPROVED]: [IStatus.SHIPPED, IStatus.CANCELLED_BY_ADMIN],
     [IStatus.SHIPPED]: [IStatus.DELIVERED],
+    [IStatus.DELIVERED]: [],
+    [IStatus.CANCELLED_BY_USER]: [],
+    [IStatus.CANCELLED_BY_ADMIN]: [],
+};
+
+export const validUserStatusTransitions: Record<IStatus, IStatus[]> = {
+    [IStatus.PENDING_FOR_PAYMENT]: [IStatus.CANCELLED_BY_USER],
+    [IStatus.APPROVED]: [IStatus.CANCELLED_BY_USER],
+    [IStatus.SHIPPED]: [],
     [IStatus.DELIVERED]: [],
     [IStatus.CANCELLED_BY_USER]: [],
     [IStatus.CANCELLED_BY_ADMIN]: [],

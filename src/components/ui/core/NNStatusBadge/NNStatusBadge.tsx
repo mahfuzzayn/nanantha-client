@@ -19,10 +19,10 @@ export const NNStatusBadge = ({ status }: { status: IStatus }) => {
     const colorClass = StatusColorMap[status];
 
     return (
-        <div
+        <span
             className={`cursor-pointer px-2 py-1 text-xs rounded-md ${colorClass}`}
         >
             {StatusDisplayName[status]}
-        </div>
+        </span>
     );
 };

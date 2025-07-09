@@ -10,7 +10,7 @@ import orangeGradientBg from "@/assets/images/orange-gradient-bg.jpg";
 export const metadata: Metadata = {
     title: "FAQ ‣ Nanantha",
     description:
-        "Find answers to common questions about our platform, services, and policies to help you get started.",
+        "Have questions about shopping at Nanantha? Check out our frequently asked questions for quick help on orders, payments, shipping, and more.",
 };
 
 const faqData = [

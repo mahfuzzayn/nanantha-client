@@ -173,7 +173,7 @@ const AdminOverview = ({
                     <h2 className="text-2xl font-normal">
                         <Link
                             href={`/admin/dashboard/users`}
-                            className="hover:underline hover:text-it-destructive"
+                            className="hover:underline hover:text-secondary"
                         >
                             Users
                         </Link>
@@ -230,10 +230,29 @@ const AdminOverview = ({
                         backgroundImage: `url('${orangeGradientBg.src}')`,
                     }}
                 >
-                    <h2 className="text-2xl font-normal">Introduction</h2>
-                    <p className="text-xl font-extrabold">
+                    <h2 className="text-2xl font-normal">
+                        <Link
+                            href="/admin/dashboard/profile"
+                            className="hover:underline hover:text-secondary"
+                        >
+                            Introduction
+                        </Link>
+                    </h2>
+                    <p className="flex flex-col">
                         {admin?.name ? (
-                            <i>{admin?.name}</i>
+                            <>
+                                <i className="text-xl text-secondary font-bold">
+                                    {admin?.name}
+                                </i>
+                                {admin?.location && (
+                                    <span className="font-medium">
+                                        <span className="font-bold">
+                                            Location
+                                        </span>
+                                        : {admin?.location}
+                                    </span>
+                                )}
+                            </>
                         ) : (
                             <i className="text-gray-500">
                                 You didn't set your info, go to manage profile
@@ -252,7 +271,7 @@ const AdminOverview = ({
                 <h2 className="text-2xl font-normal">
                     <Link
                         href={`/admin/dashboard/products`}
-                        className="hover:underline hover:text-it-destructive"
+                        className="hover:underline hover:text-secondary"
                     >
                         Products
                     </Link>
@@ -284,7 +303,7 @@ const AdminOverview = ({
                     <h2 className="text-2xl font-normal">
                         <Link
                             href={`/admin/dashboard/orders`}
-                            className="hover:underline hover:text-it-destructive"
+                            className="hover:underline hover:text-secondary"
                         >
                             Orders
                         </Link>
@@ -335,7 +354,7 @@ const AdminOverview = ({
                     <h2 className="text-2xl font-normal">
                         <Link
                             href={`/admin/dashboard/reviews`}
-                            className="hover:underline hover:text-it-destructive"
+                            className="hover:underline hover:text-secondary"
                         >
                             Reviews
                         </Link>

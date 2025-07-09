@@ -8,4 +8,6 @@ export interface IReview {
     isVisible: boolean;
     rating: number;
     comment: string;
+    createdAt?: Date;
+    updatedAt?: Date;
 }

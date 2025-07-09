@@ -1,6 +1,13 @@
-import RegisterForm from "@/components/modules/auth/Register/RegisterForm";
+import RegisterForm from "@/components/modules/auth/register/RegisterForm";
 import { Home } from "lucide-react";
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+    title: "Register ‣ Nanantha",
+    description:
+        "Create your free Nanantha account today. Unlock personalized recommendations, faster checkout, and exclusive book deals!",
+};
 
 const RegisterPage = () => {
     return (

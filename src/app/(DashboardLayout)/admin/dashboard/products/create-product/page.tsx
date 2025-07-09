@@ -6,13 +6,13 @@ import React from "react";
 export const metadata: Metadata = {
     title: "Create Product ‣ Admin Dashboard ‣ Nanantha",
     description:
-        "Review and update your upcoming and past bookings to stay on top of your schedule.",
+        "Add new books to Nanantha’s catalog with ease. Enter title, author, image, pricing, and descriptions to grow your inventory.",
 };
 
-const UpdateProductPage = async () => {
+const CreateProductPage = async () => {
     const { data: user } = await getMe();
 
     return <CreateProductForm user={user} />;
 };
 
-export default UpdateProductPage;
+export default CreateProductPage;

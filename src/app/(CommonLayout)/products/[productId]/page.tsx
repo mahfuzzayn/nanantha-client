@@ -16,10 +16,10 @@ export const generateMetadata = async ({
     return {
         title: `${
             product?.title ? product?.title : "Unknown"
-        } ‣ Tutors ‣ Instructly`,
+        } ‣ Product ‣ Nanantha`,
         description: `${
             product?.description ||
-            `Explore tutoring services offered by ${product?.title}. ${product?.author} is ready to help you succeed.`
+            `Explore details about ${product?.title} at Nanantha. Read the synopsis, author info, reviews, and get your copy with a seamless shopping experience.`
         }`,
     };
 };

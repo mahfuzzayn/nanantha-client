@@ -11,10 +11,9 @@ import { NNTable } from "@/components/ui/core/NNTable";
 import TablePagination from "@/components/ui/core/NNTable/TablePagination";
 import { NNStatusBadge } from "@/components/ui/core/NNStatusBadge/NNStatusBadge";
 import { NNPaymentStatusBadge } from "@/components/ui/core/NNPaymentStatusBadge/NNPaymentStatusBadge";
-import "./ManageAdminOrders.css";
-import ChangeStatusByAdmin from "./ChangeStatusByAdmin";
+import ChangeStatusByUser from "./ChangeStatusByUser/ChangeStatusByUser";
 
-const ManageAdminOrders = ({
+const ManageUserOrders = ({
     orders,
     meta,
 }: {
@@ -76,8 +75,8 @@ const ManageAdminOrders = ({
             ),
         },
         {
-            accessorKey: "created",
-            header: "Booking Date",
+            accessorKey: "createdAt",
+            header: "Created At",
             cell: ({ row }) => (
                 <div className="flex items-center space-x-3">
                     <span className="truncate">
@@ -114,7 +113,7 @@ const ManageAdminOrders = ({
                             <SquareArrowOutUpRight />
                         </Button>
                     </Link>
-                    <ChangeStatusByAdmin
+                    <ChangeStatusByUser
                         orderId={row?.original?._id}
                         status={row?.original?.status as IStatus}
                     />
@@ -125,10 +124,15 @@ const ManageAdminOrders = ({
 
     return (
         <div className="m-5">
-            <div className="mb-4">
-                <h1 className="text-2xl text-secondary font-bold">
+            <div className="mb-4 space-y-2">
+                <h1 className="flex items-center gap-x-1 text-2xl text-secondary font-bold">
                     Manage Orders
                 </h1>
+                {meta?.total && (
+                    <p className="font-medium text-primary">
+                        Total Orders: <span>{meta?.total}</span>
+                    </p>
+                )}
             </div>
             <NNTable columns={columns} data={orders || []} />
             <TablePagination totalPage={meta?.totalPage} />
@@ -136,4 +140,4 @@ const ManageAdminOrders = ({
     );
 };
 
-export default ManageAdminOrders;
+export default ManageUserOrders;

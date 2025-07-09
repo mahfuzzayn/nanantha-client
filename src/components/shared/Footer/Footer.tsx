@@ -20,7 +20,7 @@ const Footer = () => {
                                 height={500}
                                 width={500}
                                 className="w-full max-w-[100px]"
-                                alt="Instructly Logo"
+                                alt="Nanantha Logo"
                             />
                             <h2 className="text-2xl text-accent font-extrabold">
                                 Nanantha

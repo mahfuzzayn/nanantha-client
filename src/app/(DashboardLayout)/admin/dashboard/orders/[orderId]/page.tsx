@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+import ChangeStatusByAdmin from "@/components/modules/orders/admin/ChangeStatusByAdmin/ChangeStatusByAdmin";
 import { Button } from "@/components/ui/button";
 import { NNPaymentStatusBadge } from "@/components/ui/core/NNPaymentStatusBadge/NNPaymentStatusBadge";
 import { NNStatusBadge } from "@/components/ui/core/NNStatusBadge/NNStatusBadge";
@@ -6,6 +7,7 @@ import { getSingleOrder } from "@/services/order";
 import { IOrder, IStatus } from "@/types";
 import { ArrowLeft } from "lucide-react";
 import moment from "moment";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -14,7 +16,7 @@ export const generateMetadata = async ({
     params,
 }: {
     params: Promise<{ orderId: string }>;
-}) => {
+}): Promise<Metadata> => {
     const { orderId } = await params;
     const { data: order }: { data: IOrder } = await getSingleOrder(orderId);
 
@@ -27,11 +29,7 @@ export const generateMetadata = async ({
                   )})`
                 : "Invalid Order"
         } ‣ Admin Dashboard ‣ Nanantha`,
-        description: `${
-            order?.createdAt
-                ? `Confirm your order for product ${order?.amount}. Enhance your learning journey and achieve your academic goals.`
-                : "Invalid Order, so we can't provide any description."
-        }`,
+        description: `View and manage details of a specific customer order in Nanantha’s admin dashboard. Update status, check items, and ensure smooth fulfillment.`,
     };
 };
 
@@ -52,7 +50,7 @@ const AdminOrderPage = async ({
                 <p className="text-lg text-center">
                     Order ID: <span className="font-semibold">{orderId}</span>
                 </p>
-                <Link href="/student/dashboard/orders">
+                <Link href="/admin/dashboard/orders">
                     <Button className="bg-primary hover:bg-secondary cursor-pointer font-semibold mb-5">
                         <ArrowLeft /> Orders
                     </Button>
@@ -100,7 +98,9 @@ const AdminOrderPage = async ({
                     </p>
                     <p className="font-medium">
                         Total Amount:{" "}
-                        <span className="font-bold text-destructive">{order?.amount}$</span>
+                        <span className="font-bold text-destructive">
+                            {order?.amount}$
+                        </span>
                     </p>
                     <p className="font-medium">
                         Purchase Date:{" "}
@@ -183,6 +183,15 @@ const AdminOrderPage = async ({
                                 )}
                             </span>
                         </p>
+                    </div>
+                    <div className="mt-8 space-y-2">
+                        <h2 className="text-xl font-bold text-secondary">
+                            Action
+                        </h2>
+                        <ChangeStatusByAdmin
+                            orderId={order?._id}
+                            status={order?.status as IStatus}
+                        />
                     </div>
                 </div>
             </div>

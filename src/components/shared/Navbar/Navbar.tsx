@@ -181,20 +181,22 @@ const Navbar = () => {
                                         </ul>
                                     )}
                                 </li>
-                                <li>
-                                    <Link
-                                        href="/cart"
-                                        className="relative block transition-all duration-300 w-full p-2 hover:bg-accent hover:text-white border-[2px] border-primary rounded-full"
-                                    >
-                                        <ShoppingCart />
-                                        {(cart?.items?.length as number) >
-                                            0 && (
-                                            <p className="absolute bg-primary py-0.5 px-1.5 rounded-full -bottom-2 -right-2 text-xs text-white">
-                                                {cart?.items?.length}
-                                            </p>
-                                        )}
-                                    </Link>
-                                </li>
+                                {user?.role === "user" && (
+                                    <li>
+                                        <Link
+                                            href="/cart"
+                                            className="relative block transition-all duration-300 w-full p-2 hover:bg-accent hover:text-white border-[2px] border-primary rounded-full"
+                                        >
+                                            <ShoppingCart />
+                                            {(cart?.items?.length as number) >
+                                                0 && (
+                                                <p className="absolute bg-primary py-0.5 px-1.5 rounded-full -bottom-2 -right-2 text-xs text-white">
+                                                    {cart?.items?.length}
+                                                </p>
+                                            )}
+                                        </Link>
+                                    </li>
+                                )}
                                 <button
                                     onClick={handleLogOut}
                                     className="hover:text-accent cursor-pointer transition-all duration-300"

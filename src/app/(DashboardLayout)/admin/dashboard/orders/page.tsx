@@ -1,4 +1,4 @@
-import ManageAdminOrders from "@/components/modules/orders/ManageAdminOrders";
+import ManageAdminOrders from "@/components/modules/orders/admin/ManageAdminOrders";
 import { getAllOrders } from "@/services/order";
 import { Metadata } from "next";
 import React from "react";
@@ -6,7 +6,7 @@ import React from "react";
 export const metadata: Metadata = {
     title: "Orders ‣ Admin Dashboard ‣ Nanantha",
     description:
-        "Review and update your upcoming and past bookings to stay on top of your schedule.",
+        "Manage all bookstore orders efficiently in the Nanantha admin panel. Track order details, statuses, and customer purchases.",
 };
 
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -20,7 +20,7 @@ const AdminOrdersPage = async ({
     const { data: orders, meta } = await getAllOrders(
         (query?.page as string) || undefined,
         "5",
-        (query?.sort as string) || undefined,
+        (query?.sort as string) || "-createdAt",
         query
     );
 

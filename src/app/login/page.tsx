@@ -1,6 +1,13 @@
-import LoginForm from "@/components/modules/auth/Login/LoginForm";
+import LoginForm from "@/components/modules/auth/login/LoginForm";
 import { Home } from "lucide-react";
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+    title: "Login ‣ Nanantha",
+    description:
+        "Login to your Nanantha account to manage orders, track your wishlist, and enjoy a personalized book shopping experience.",
+};
 
 const LoginPage = () => {
     return (

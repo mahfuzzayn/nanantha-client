@@ -5,6 +5,13 @@ import LiquidCheck from "@/assets/gifs/animated-check.gif";
 import CrossCheck from "@/assets/gifs/animated-cross-x.gif";
 import orangeGradientBg from "@/assets/images/orange-gradient-bg.jpg";
 import { getOrderByPaymentId } from "@/services/order";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Payment Success ‣ Nanantha",
+    description:
+        "Thank you for your purchase at Nanantha! Your payment was successful, and your books are on their way. Happy reading!",
+};
 
 const PaymentSuccessPage = async ({
     searchParams,

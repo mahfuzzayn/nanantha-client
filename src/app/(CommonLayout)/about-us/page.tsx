@@ -10,13 +10,12 @@ import Image from "next/image";
 export const metadata: Metadata = {
     title: "About Us ‣ Nanantha",
     description:
-        "Discover our story, mission, and values as we strive to connect students and tutors for a better learning experience.",
+        "Learn more about Nanantha—the bookstore dedicated to readers. Our mission is to make books accessible and shopping delightful for book lovers everywhere.",
 };
 
 const aboutData = {
     mission:
         "At Nanantha, our mission is to ignite a love for reading by offering a diverse collection of books and an exceptional shopping experience for all book lovers.",
-
     team: [
         {
             name: "Mahfuz Zayn",

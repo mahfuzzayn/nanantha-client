@@ -278,10 +278,17 @@ const AdminManageProducts = ({
 
     return (
         <div className="m-5">
-            <div className="flex items-center justify-between mb-4">
-                <h1 className="text-2xl text-secondary font-bold">
-                    Manage Products
-                </h1>
+            <div className="flex flex-col md:flex-row justify-between mb-6 md:mb-4">
+                <div className="mb-4 space-y-2">
+                    <h1 className="text-2xl text-secondary font-bold">
+                        Manage Products
+                    </h1>
+                    {meta?.total && (
+                        <p className="font-medium text-primary">
+                            Total Products: <span>{meta?.total}</span>
+                        </p>
+                    )}
+                </div>
                 <Link href={`/${user?.role}/dashboard/products/create-product`}>
                     <Button className="bg-primary hover:bg-secondary cursor-pointer font-semibold">
                         Create Product

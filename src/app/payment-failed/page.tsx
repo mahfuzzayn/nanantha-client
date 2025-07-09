@@ -3,8 +3,15 @@ import CrossCheck from "@/assets/gifs/animated-cross-x.gif";
 import orangeGradientBg from "@/assets/images/orange-gradient-bg.jpg";
 import Image from "next/image";
 import Link from "next/link";
+import { Metadata } from "next";
 
-const PaymentSuccessPage = async () => {
+export const metadata: Metadata = {
+    title: "Payment Failed ‣ Nanantha",
+    description:
+        "Oops! Your payment at Nanantha didn’t go through. Please try again or contact us for help to complete your order smoothly.",
+};
+
+const PaymentFailedPage = async () => {
     return (
         <div className="min-h-screen flex justify-center items-center">
             <div
@@ -36,4 +43,4 @@ const PaymentSuccessPage = async () => {
     );
 };
 
-export default PaymentSuccessPage;
+export default PaymentFailedPage;
