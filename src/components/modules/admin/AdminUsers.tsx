@@ -109,7 +109,7 @@ const AdminUsers = ({ users, meta }: { users: IUser[]; meta: IMeta }) => {
             header: "Role",
             cell: ({ row }) => (
                 <div className="flex items-center space-x-3">
-                    <span className="truncate font-semibold cursor-pointer select-none">
+                    <span className="font-semibold cursor-pointer select-none">
                         {row.original?.role === "admin" ? (
                             <Badge variant="default">Admin</Badge>
                         ) : (

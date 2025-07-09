@@ -51,11 +51,7 @@ const ManageUserOrders = ({
             header: "Status",
             cell: ({ row }) => (
                 <div className="flex items-center space-x-3">
-                    <span className="truncate">
-                        <NNStatusBadge
-                            status={row.original.status as IStatus}
-                        />
-                    </span>
+                    <NNStatusBadge status={row.original.status as IStatus} />
                 </div>
             ),
         },
@@ -64,13 +60,9 @@ const ManageUserOrders = ({
             header: "Payment Status",
             cell: ({ row }) => (
                 <div className="flex items-center space-x-3">
-                    <span className="truncate">
-                        <NNPaymentStatusBadge
-                            status={
-                                row.original.paymentStatus as IPaymentStatus
-                            }
-                        />
-                    </span>
+                    <NNPaymentStatusBadge
+                        status={row.original.paymentStatus as IPaymentStatus}
+                    />
                 </div>
             ),
         },
