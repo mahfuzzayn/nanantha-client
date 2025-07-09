@@ -116,7 +116,7 @@ const UserReviews = ({
     return (
         <div className="m-5">
             <div className="flex flex-col md:flex-row justify-between mb-6 md:mb-4">
-                <div className="mb-4 space-y-2">
+                <div className="space-y-2">
                     <h1 className="text-2xl text-secondary font-bold">
                         Manage Reviews
                     </h1>
