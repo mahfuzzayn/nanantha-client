@@ -11,8 +11,8 @@ Nanantha Client is a modern online bookstore built with Next.js. Users can brows
 - **Frontend Framework:** NextJS (React + TypeScript)
 - **UI Library:** Shadcn & Tailwind CSS
 - **Routing:** NextJS App Router
-- **API Requests:** Fetch/Async Services (no Redux)
-- **Authentication:** NextAuth
+- **API Requests:** NextJS Built-in Functionalities
+- **Authentication:** Custom Secure Authentication
 - **Payment System:** Mollie
 
 ## **Getting Started**
